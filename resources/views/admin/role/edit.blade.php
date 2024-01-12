@@ -15,21 +15,21 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        @include('partials.content-header', ['name' => 'Role', 'key' => 'Add'])
+        @include('partials.content-header', ['name' => 'Role', 'key' => 'Edit'])
         @include('admin.alert')
 
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <form action="{{ route('admin.roles.store') }}" method="post" enctype="multipart/form-data"
-                        style="width:100%;">
+                    <form action="{{ route('admin.roles.update', ['id' => $role->id]) }}" method="post"
+                        enctype="multipart/form-data" style="width:100%;">
                         <div class="col-md-12">
                             @csrf
                             <div class="form-group">
                                 <label>Tên Vai tro</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" placeholder="Nhập tên vai tro" value="{{ old('name') }}">
+                                    name="name" placeholder="Nhập tên vai tro" value="{{ $role->name }}">
                                 @error('name')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label>Mô tả</label>
                                 <textarea type="text" class="form-control @error('display_name') is-invalid @enderror" name="display_name"
-                                    placeholder="Mô tả vai tro" rows="4">{{ old('display_name') }}</textarea>
+                                    placeholder="Mô tả vai tro" rows="4">{{ $role->display_name }}</textarea>
                                 @error('display_name')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
@@ -61,6 +61,7 @@
                                                         <h5 class="card-title">
                                                             <label for="">
                                                                 <input type="checkbox" name="permission_id[]"
+                                                                    {{ $permissionChecked->contains('id', $permissionItemChild->id) ? 'checked' : '' }}
                                                                     class="checkbox_children"
                                                                     value="{{ $permissionItemChild->id }}">
                                                             </label>
