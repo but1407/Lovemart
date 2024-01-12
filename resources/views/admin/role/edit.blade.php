@@ -44,7 +44,12 @@
                             </div>
                             <div class="col-md-12">
                                 <div {{ $i = 0 }} class="row">
-
+                                    <div class="col-md-12">
+                                        <label for="">
+                                            checkall
+                                            <input type="checkbox" class="checkall">
+                                        </label>
+                                    </div>
                                     @foreach ($permissionParent as $permissionItem)
                                         <div {{ $i++ }}
                                             class="card text-white {{ $i % 2 == 0 ? 'bg-secondary' : 'bg-success' }} mb-3 col-md-12">

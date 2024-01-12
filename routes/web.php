@@ -63,7 +63,7 @@ Route::middleware(['auth'])
         Route::prefix('admin')->name('admin.')->group(function () {
             #Category
             Route::controller(CategoryController::class)->name('categories.')->prefix('categories')->group(function () {
-                Route::get('/', 'index')->name('index');
+                Route::get('/', 'index')->name('index')->middleware('can:category-list');
 
                 Route::get('/create', 'create')->name('create');
                 Route::post('/store', 'store')->name('store');
@@ -73,7 +73,7 @@ Route::middleware(['auth'])
             });
             #Menus
             Route::controller(MenuController::class)->name('menus.')->prefix('menus')->group(function () {
-                Route::get('/', 'index')->name('index');
+                Route::get('/', 'index')->name('index')->middleware('can:menu-list');
 
                 Route::get('/create', 'create')->name('create');
                 Route::post('/store', 'store')->name('store');

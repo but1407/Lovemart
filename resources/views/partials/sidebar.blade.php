@@ -83,10 +83,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.users.logout') }}" class="nav-link">
-                        <p>
+                    <a href="{{ route('admin.users.logout') }}" class="nav-link" style="color:rgb(173, 57, 57); ">
+                        <h5>
                             Đăng Xuất
-                        </p>
+                        </h5>
                     </a>
                 </li>
             </ul>
