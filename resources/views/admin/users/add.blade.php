@@ -53,7 +53,8 @@
                             <div class="form-group">
                                 <label>Chọn tư cách người dùng</label>
 
-                                <select name="role_user[]" class="form-control select2_init" id="" multiple>
+                                <select name="role_user[]" class="form-control select2_init" id="" multiple
+                                    required>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}" class="select2_choice">
                                             {{ $role->name }}

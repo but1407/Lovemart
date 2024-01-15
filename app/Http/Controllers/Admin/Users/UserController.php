@@ -10,6 +10,7 @@ use App\Services\User\UserService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\CreateUserRequest;
 
 class UserController extends Controller
 {
@@ -37,7 +38,7 @@ class UserController extends Controller
         $roles = $this->role->all();
         return view('admin.users.add',compact('roles'));
     }
-    public function store(Request $request){
+    public function store(CreateUserRequest $request){
         try{
             DB::beginTransaction();
             $users =$this->user->create([
@@ -51,7 +52,7 @@ class UserController extends Controller
         
             $users->roles()->attach($request->role_user);
             DB::commit(); //
-            return redirect()->route('admin.users.create');
+            return redirect()->route('admin.users.create')->with('success', 'Create Users Successfully');       
         } catch(\Exception $e){
             DB::rollBack();
             Log::error($e->getMessage() . ' ---Line: ' . $e->getLine());

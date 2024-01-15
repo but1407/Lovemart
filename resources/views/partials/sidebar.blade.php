@@ -83,9 +83,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.permissions.create') }}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Tạo dữ liệu bảng Role
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ route('admin.users.logout') }}" class="nav-link" style="color:rgb(173, 57, 57); ">
                         <h5>
                             Đăng Xuất
+
                         </h5>
                     </a>
                 </li>

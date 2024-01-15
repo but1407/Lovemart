@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Role\CreateRoleRequest;
 
 class RoleController extends Controller
 {
@@ -29,12 +30,11 @@ class RoleController extends Controller
         
         return view('admin.role.add',compact('permissionParent'));
     }
-    public function store(Request $request)
+    public function store(CreateRoleRequest $request)
     {
         $role = $this->role->create([
             'name' => $request->name,
             'display_name' => $request->display_name,
-
         ]);
         $role->permissions()->attach($request->permission_id);
         return redirect()->back()->with('success', 'Create Successful');
@@ -55,4 +55,7 @@ class RoleController extends Controller
         $role->permissions() -> sync($request->permission_id);
         return redirect()->route('admin.roles.index');
     }
+
+
+
 }

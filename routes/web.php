@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Sliders\SliderController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\Admin\Role\RoleController;
+use App\Http\Controllers\Admin\Permission\PermissionController;
+
+use App\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +94,8 @@ Route::middleware(['auth'])
                 Route::post('/update/{id}', 'update')->name('update');
                 Route::get('/delete/{id}', 'delete')->name('delete');
 
+                
+
             });
             #Slider
             Route::controller(SliderController::class)->name('sliders.')->prefix('sliders')->group(function () {
@@ -130,6 +135,17 @@ Route::middleware(['auth'])
                 Route::get('/edit/{id}', 'edit')->name('edit');
                 Route::post('/update/{id}', 'update')->name('update');
                 Route::get('/delete/{id}', 'delete')->name('delete');
+                
+                
+            });
+            #permision
+            Route::controller(PermissionController::class)->name('permissions.')->prefix('permissions')->group(function () {
+                // Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/store', 'store')->name('store');
+                // Route::get('/edit/{id}', 'edit')->name('editPermission');
+                // Route::post('/update/{id}', 'update')->name('updatePermission');
+                // Route::get('/delete/{id}', 'delete')->name('deletePermission');
 
             });
             
