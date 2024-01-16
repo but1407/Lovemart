@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <label>Chọn Phan quyen cha</label>
                                 <select class="form-control" name="module_parent">
-                                    <option value="">chon ten module</option>
+                                    <option value="0">chon ten module</option>
                                     @foreach (config('permissions.table_module') as $moduleItem)
                                         <option value="{{ $moduleItem }}">{{ $moduleItem }}</option>
                                     @endforeach

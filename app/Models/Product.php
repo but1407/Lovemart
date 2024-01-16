@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -22,8 +23,10 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
     public function getProduct($filters =[]){
-        $products = Product::orderBy('created_at', 'asc');
+        $user = Auth::user();
 
+        $products = Product::orderBy('created_at', 'asc');
+        $products= $products->where('user_id', $user->id);
         if (!empty($filters)) {
             $products = $products->where($filters);
         }

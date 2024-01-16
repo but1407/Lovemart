@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Helpers;
 
 //  <td>' . self::active($category->status) . '</td>
@@ -15,13 +16,13 @@ class Helper
                     <td>' . $char.$category->name . '</td>
                     <td>' . $category->updated_at->toDateString() . '</td>
                     
-                    <td>
-                        <a class ="btn btn-primary"
-                        href="/admin/categories/edit/'.$category->id.'">
+                    <td >
+                            <a class="btn btn-primary permission-add" 
+                            href="/admin/categories/edit/'.$category->id.'">
                             Edit
-                        </a>
-
-                        <a class="btn btn-danger btn-sm"
+                            </a>
+                        
+                        <a class="btn btn-danger btn-sm permission-delete"
                         onclick="removeRow('.$category->id.',\'/admin/categories/delete\' )"
                         href="/admin/categories/delete/'.$category->id.'" met>
                             DELETE
@@ -114,12 +115,12 @@ class Helper
                     <td>' . $slider->updated_at->toDateString() . '</td>
                     
                     <td>
-                        <a class ="btn btn-primary"
+                        <a class ="btn btn-primary category-add"
                         href="/admin/sliders/edit/' . $slider->id . '">
                             Edit
                         </a>
 
-                        <a class="btn btn-danger btn-sm action_delete"
+                        <a class="btn btn-danger btn-sm action_delete category-delete"
                             href=""
                         data-url="/admin/sliders/delete/' . $slider->id . '" met>
                             DELETE

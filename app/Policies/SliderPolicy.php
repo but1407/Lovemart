@@ -53,7 +53,7 @@ class SliderPolicy
      * @param  \App\Models\Slider  $slider
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Slider $slider)
+    public function update(User $user)
     {
         return    $user->checkPermissionAccess(config('permissions.access.edit-slider'));
 
@@ -66,7 +66,7 @@ class SliderPolicy
      * @param  \App\Models\Slider  $slider
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Slider $slider)
+    public function delete(User $user)
     {
         return    $user->checkPermissionAccess(config('permissions.access.delete-slider'));
 

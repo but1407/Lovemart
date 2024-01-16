@@ -53,10 +53,14 @@ class ProductPolicy
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user)
+    public function update(User $user,$id)
     {
-            return    $user->checkPermissionAccess(config('permissions.access.edit-product'));
-
+        $product = Product::find($id);
+        if($user->checkPermissionAccess(config('permissions.access.edit-product') && $user->id === $product->user_id)){
+            return true;
+        }
+            
+        return false;
     }
 
     /**
@@ -66,9 +70,15 @@ class ProductPolicy
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user)
+    public function delete(User $user,$id)
     {
-        return    $user->checkPermissionAccess(config('permissions.access.delete-product'));
+        $product = Product::find($id);
+
+        if($user->checkPermissionAccess(config('permissions.access.delete-product')) && $user->id === $product->user_id){
+            return true;
+        }
+            
+        return false;
 
     }
 

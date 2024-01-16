@@ -88,3 +88,19 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+
+@can('category-add')
+    <style>
+        .permission-add {
+            visibility: hidden;
+        }
+    </style>
+@endcan
+
+@can('category-delete')
+    <style>
+        .permission-delete {
+            visibility: hidden;
+        }
+    </style>
+@endcan

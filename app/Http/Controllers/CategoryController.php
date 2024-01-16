@@ -118,7 +118,7 @@ class CategoryController extends Controller
         $result = $this->categoriesService->delete($id,$request);
         if($result){
             Session::flash('success',"Xóa thành công thư mục");
-            return redirect()->route('categories.index');
+            return redirect()->back()->with('success','Delete Successfully');
 
         }
         Session::flash('success',"Xóa không được thư mục");

@@ -35,31 +35,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 })->name('home');
-Route::prefix('admin/users')->group(function() {
-        #LoginController
-        Route::controller(LoginController::class)->group(function () {
-                Route::get('login','index')->name('login.index');
-                Route::post('login/store', 'store')->name('login.store');
-                #forgot password    
-                Route::get('users/forgot-password', 'forgotPassword')->name('users.forgot-password');
-                Route::post('users/forgot-password','postForgotPass')->name('forgot-password');
-                Route::get('users/forgot-password/search-success','searchSuccess')->name('search-success');
-                Route::get('get-password/{customer}/{token}','getPass')->name('users.change-password');
-                Route::post('get-password/{customer}/{token}','postGetPass');
-        #register
-        Route::controller(AuthController::class)->group(function () {
-            Route::get('/index',  'index')->name('users.index');
-            Route::post('/register',  'register')->name('register');
-            Route::post('/re_register',  're_register');
-            
-        });
-        Route::controller(VerificationController::class)->group(function () {
-            Route::get('email/verify/{id}', 'verify')->name('verification.verify');
-            Route::post('email/verify_OTP', 'verify_OTP')->name('verification.verify_OTP');
-            Route::post('email/logout_OTP', 'logout_OTP');
-        });
-    });
-});
+
 
 Route::middleware(['auth'])
     ->group(function () {
@@ -89,9 +65,9 @@ Route::middleware(['auth'])
                 Route::get('/', 'index')->name('index')->middleware('can:product-list');
                 Route::get('/create', 'create')->name('create')->middleware('can:product-add');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:product-edit');
+                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:product-edit,id');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:product-delete');
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:product-delete,id');
 
             });
             #Slider

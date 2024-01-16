@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\ProductImage;
-use App\Models\ProductTag;
-
-use App\Http\Requests\Product\CreateProductRequest;
-use App\Traits\StorageImageTrait;
-use Illuminate\Http\Request;
-use App\Services\CategoriesService;
-use App\Services\Product\ProductService;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Storage;
+use App\Models\Product;
+use App\Models\ProductTag;
+use App\Models\ProductImage;
+
+use Illuminate\Http\Request;
+use App\Traits\StorageImageTrait;
+use Illuminate\Support\Facades\DB;
+use App\Services\CategoriesService;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Services\Product\ProductService;
+use App\Http\Requests\Product\CreateProductRequest;
 
 class ProductController extends Controller
 {
@@ -107,10 +108,10 @@ class ProductController extends Controller
                 $this->producttag->where('product_id',$id)->delete();
 
             }
-            return response()->json([
-                'status' => 200,
-                'message' => "delete successfully"
-            ],200);
+            // return response()->json([
+            //     'status' => 200,
+            //     'message' => "delete successfully"
+            // ],200);
         } catch (\Exception $e) {
             Log::error('Message: '. $e->getMessage() . '  Line: ' . $e->getLine());
             return response()->json([
@@ -118,5 +119,6 @@ class ProductController extends Controller
                 'message' => $e->getMessage()
             ],500);
         }
+        return redirect()->back()->with('success','Delete Success');
     }
 }
