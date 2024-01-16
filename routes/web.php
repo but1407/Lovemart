@@ -68,85 +68,75 @@ Route::middleware(['auth'])
             Route::controller(CategoryController::class)->name('categories.')->prefix('categories')->group(function () {
                 Route::get('/', 'index')->name('index')->middleware('can:category-list');
 
-                Route::get('/create', 'create')->name('create');
+                Route::get('/create', 'create')->name('create')->middleware('can:category-add');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:category-edit');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete');
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:category-delete');
             });
             #Menus
             Route::controller(MenuController::class)->name('menus.')->prefix('menus')->group(function () {
                 Route::get('/', 'index')->name('index')->middleware('can:menu-list');
 
-                Route::get('/create', 'create')->name('create');
+                Route::get('/create', 'create')->name('create')->middleware('can:menu-add');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:menu-edit');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete');
-
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:menu-delete');
             });
             #Product 
             Route::controller(ProductController::class)->name('products.')->prefix('products')->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/create', 'create')->name('create');
+                Route::get('/', 'index')->name('index')->middleware('can:product-list');
+                Route::get('/create', 'create')->name('create')->middleware('can:product-add');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:product-edit');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete');
-
-                
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:product-delete');
 
             });
             #Slider
             Route::controller(SliderController::class)->name('sliders.')->prefix('sliders')->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/create', 'create')->name('create');
+                Route::get('/', 'index')->name('index')->middleware('can:slider-list');
+                Route::get('/create', 'create')->name('create')->middleware('can:slider-add');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:slider-edit');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete');
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:slider-delete');
 
             });
             #Setting
             Route::controller(SettingController::class)->name('settings.')->prefix('settings')->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/create', 'create')->name('create');
+                Route::get('/', 'index')->name('index')->middleware('can:setting-list');
+                Route::get('/create', 'create')->name('create')->middleware('can:setting-add');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:setting-edit');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete');
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:setting-delete');
 
             });
             #User
             Route::controller(UserController::class)->name('users.')->prefix('users')->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/create', 'create')->name('create');
+                Route::get('/', 'index')->name('index')->middleware('can:user-list');
+                Route::get('/create', 'create')->name('create')->middleware('can:user-add');
                 Route::post('/store', 'store')->name('store');
-                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:user-edit');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete');
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:user-delete');
 
             });
             #Role
             Route::controller(RoleController::class)->name('roles.')->prefix('roles')->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/create', 'create')->name('create'); 
+                Route::get('/', 'index')->name('index')->middleware('can:role-list');
+                Route::get('/create', 'create')->name('create')->middleware('can:role-add');
                 Route::post('/store', 'store')->name('store');
                 Route::get('/edit/{id}', 'edit')->name('edit');
                 Route::post('/update/{id}', 'update')->name('update');
-                Route::get('/delete/{id}', 'delete')->name('delete');
-                
-                
+                Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:role-delete');
             });
             #permision
             Route::controller(PermissionController::class)->name('permissions.')->prefix('permissions')->group(function () {
-                // Route::get('/', 'index')->name('index');
-                Route::get('/create', 'create')->name('create');
+                Route::get('/create', 'create')->name('create')->middleware('can:permission-add');
                 Route::post('/store', 'store')->name('store');
-                // Route::get('/edit/{id}', 'edit')->name('editPermission');
-                // Route::post('/update/{id}', 'update')->name('updatePermission');
-                // Route::get('/delete/{id}', 'delete')->name('deletePermission');
-
             });
             
             #logout

@@ -55,8 +55,7 @@ use App\Http\Controllers\Admin\Users\UserController;
 //         Route::controller(AuthController::class)->group(function () {
 //             Route::get('/index',  'index')->name('users.index');
 //             Route::post('/register',  'register')->name('register');
-//             Route::post('/re_register',  're_register');
-            
+//             Route::post('/re_register',  're_register');    
 //          });
 //         Route::controller(VerificationController::class)->group(function () {
 //             Route::get('email/verify/{id}', 'verify')->name('verification.verify');
@@ -88,7 +87,6 @@ use App\Http\Controllers\Admin\Users\UserController;
 //                 Route::get('/edit/{id}', 'edit')->name('edit');
 //                 Route::post('/update/{id}', 'update')->name('update');
 //                 Route::get('/delete/{id}', 'delete')->name('delete');
-
 //             });
 //             #Product 
 //             Route::controller(ProductController::class)->name('products.')->prefix('products')->group(function () {
