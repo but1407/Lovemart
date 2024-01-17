@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Sliders;
 
 use App\Http\Controllers\Controller;
+use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
 use App\Http\Requests\Slider\CreateSliderRequest;
@@ -10,6 +11,7 @@ use App\Models\Slider;
 class SliderController extends Controller
 {
     use StorageImageTrait;
+    use DeleteModelTrait;
 
     private $slider;
     public function __construct(Slider $slider){

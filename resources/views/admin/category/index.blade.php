@@ -87,18 +87,18 @@
         color: inherit;
     }
 </style>
-@can('category-add')
+@cannot('category-add')
     <style>
         .permission-add {
             visibility: hidden;
         }
     </style>
-@endcan
+@endcannot
 
-@can('category-delete')
+@cannot('category-delete')
     <style>
         .permission-delete {
             visibility: hidden;
         }
     </style>
-@endcan
+@endcannot

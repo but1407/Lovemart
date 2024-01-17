@@ -24,7 +24,7 @@ class Category extends Model
         }
 
         // $categories = $categories->get();
-        $categories = $categories -> paginate(20);
+        $categories = $categories -> paginate(40);
 
         return $categories;
     }
