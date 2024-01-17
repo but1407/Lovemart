@@ -75,7 +75,7 @@ class ProductController extends Controller
         return view('admin.product.edit',compact('htmlOptions','product'));
     }
     public function update(CreateProductRequest $request,$id){
-         try {
+        try {
             DB::beginTransaction();
             // Create data
             $dataUploadFeatureImage = $this->productservice->store($request);
@@ -85,7 +85,7 @@ class ProductController extends Controller
             // image upload
             if ($request->hasFile('image_path')) {
                 $this->productimage->where('product_id',$id)->delete();
-               $storeImage= $this->productservice->storeImageMultiple($request,$product);
+                $storeImage= $this->productservice->storeImageMultiple($request,$product);
             }
             //tags
             if(!empty($request->tags)){
@@ -97,7 +97,7 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Message: '. $e->getMessage() . '  Line: ' . $e->getLine());
-            return redirect()->route('admin.products.create')->with('error','Failed Upadated');
+            return redirect()->route('admin.products.create')->with('error','Failed Updated');
         }
     }
     public function delete($id){
