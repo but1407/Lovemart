@@ -7,7 +7,6 @@ use App\Http\Controllers\Users\VerificationController;
 
 
 
-
 // Route::prefix('admin/users')->group(function() {
 //         #LoginController
 //         Route::controller(LoginController::class)->group(function () {

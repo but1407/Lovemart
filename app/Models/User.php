@@ -21,8 +21,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,6 +56,10 @@ class User extends Authenticatable
     // {
     //     return [];
     // }
+    public function messages()
+    {
+        return $this->hasMany(Message::class,'user_id');
+    }
     public function checkPermissionAccess($permissionCheck){
         $roles = auth()->user()->roles;
         //lay tat ca cac quyen cua user dang login he thong
@@ -69,4 +72,6 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    
 }

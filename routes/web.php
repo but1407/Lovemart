@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\Admin\Product\ProductController;
+use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Menus\MenuController;
-use App\Http\Controllers\Users\LoginController;
 use App\Http\Controllers\Users\AuthController;
-use App\Http\Controllers\Users\VerificationController;
-use App\Http\Controllers\Admin\Setting\SettingController;
-use App\Http\Controllers\Admin\Sliders\SliderController;
-use App\Http\Controllers\Admin\Users\UserController;
+use App\Http\Controllers\Users\LoginController;
 use App\Http\Controllers\Admin\Role\RoleController;
-use App\Http\Controllers\Admin\Permission\PermissionController;
+use App\Http\Controllers\Admin\Users\UserController;
+use App\Http\Controllers\Users\VerificationController;
+use App\Http\Controllers\Admin\Sliders\SliderController;
+use App\Http\Controllers\Admin\Message\MessageController;
+use App\Http\Controllers\Admin\Product\ProductController;
 
-use App\Models\Permission;
+use App\Http\Controllers\Admin\Setting\SettingController;
+use App\Http\Controllers\Admin\Permission\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,6 +142,15 @@ Route::middleware(['auth'])
                 Route::post('/store', 'store')->name('store');
             });
             
+
+            #message
+            Route::controller(MessageController::class)->name('message.')->prefix('message')->group(function () {
+
+                Route::get('/message', 'index')->name('view');
+                Route::get('/messages', 'fetchMessages')->name('fetch');
+                Route::post('/messages', 'sendMessage')->name('send');
+            });
+
             #logout
             Route::get('/logout', [LoginController::class, 'logout'])->name('users.logout');
         });
