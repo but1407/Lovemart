@@ -125,7 +125,6 @@ Route::middleware(['auth'])
                 Route::get('/edit/{id}', 'edit')->name('edit')->middleware('can:user-edit');
                 Route::post('/update/{id}', 'update')->name('update');
                 Route::get('/delete/{id}', 'delete')->name('delete')->middleware('can:user-delete');
-
             });
             #Role
             Route::controller(RoleController::class)->name('roles.')->prefix('roles')->group(function () {
@@ -141,8 +140,6 @@ Route::middleware(['auth'])
                 Route::get('/create', 'create')->name('create')->middleware('can:permission-add');
                 Route::post('/store', 'store')->name('store');
             });
-            
-
             #message
             Route::controller(MessageController::class)->name('message.')->prefix('message')->group(function () {
 

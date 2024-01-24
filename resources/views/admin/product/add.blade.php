@@ -42,7 +42,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>chọn danh Mục</label>
-                                            <select class="form-control select2_init" name="category_id">
+                                            <select class="form-control select2_init" name="category_id" require>
                                                 <option value="">danh mục cha</option>
                                                 {!! $htmlOptions !!}
                                             </select>
@@ -61,11 +61,21 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="menu">Giá Gốc</label>
                                             <input type="number" name="price" value="{{ old('price') }}"
                                                 class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="menu">Giá khuyến mãi</label>
+                                            <input type="number" name="promotional-price"
+                                                value="{{ old('promotional-price') }}" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -88,20 +98,7 @@
                                     <input type="hidden" name="thumb_2" id="thumb_2">
                                 </div>
 
-                                {{-- <div class="form-group">
-                                    <label>Kích Hoạt</label>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" value="1" type="radio" id="active"
-                                            name="active" checked="">
-                                        <label for="active" class="custom-control-label">Có</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" value="0" type="radio" id="no_active"
-                                            name="active">
-                                        <label for="no_active" class="custom-control-label">Không</label>
-                                    </div>
-                                </div>
-                            </div> --}}
+
 
 
                             </div>
@@ -110,16 +107,30 @@
                                     <label>Mô Tả Chi Tiết</label>
                                     <textarea name="contents" id="content" class="form-control tinymce_editor_init" rows="3">{{ old('content') }}</textarea>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+                                <div class="form-group">
+                                    <label>Kích Hoạt</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" value="1" type="radio" id="active"
+                                            name="status" checked="">
+                                        <label for="active" class="custom-control-label">Có</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" value="0" type="radio" id="no_active"
+                                            name="status">
+                                        <label for="no_active" class="custom-control-label">Không</label>
+                                    </div>
                                 </div>
-
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
                             </div>
 
                         </div>
-                        <!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
+
+                    </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
         </form>
         <!-- /.content -->
     </div>

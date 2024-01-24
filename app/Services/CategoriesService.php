@@ -32,6 +32,8 @@ class CategoriesService
                 'name'=>$request->input('name'),
                 'parent_id'=>$request->input('parent_id'),
                 'slug'=> str_slug($request->input('name')),
+                'description'=>$request->input('description'),
+                'status'=>$request->input('status'),
             ]);
             Session::flash('success','create dashboard successfully');//tạo message khi tạo dashboard thành công bằng session flash
         }catch(\Exception $err){
@@ -57,6 +59,8 @@ class CategoriesService
                     'name' => $request->name,
                     'parent_id' => $request->parent_id,
                     'slug' => str_slug($request->name),
+                    'description' =>$request->description,
+                    'status' => $request->status,
                 ]);
                 Session::flash('success', 'update successfully');
             }

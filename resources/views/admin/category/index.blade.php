@@ -53,6 +53,7 @@
                             <tr>
                                 <th scope="col">STT</th>
                                 <th scope="col">Tên danh mục</th>
+                                <th>Active</th>
 
                                 <th scope="col">Ngày cập nhật</th>
                                 <th scope="col">Action</th>

@@ -103,7 +103,7 @@ class CategoryController extends Controller
     {
         $result = $this->categoriesService->update($id,$category,$request);
         
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
 
     }
 

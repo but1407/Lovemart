@@ -49,7 +49,11 @@ class ProductController extends Controller
             DB::beginTransaction();
             // Create data
             $dataUploadFeatureImage = $this->productservice->store($request);
-            $product = $this->product->create($dataUploadFeatureImage);
+            if($dataUploadFeatureImage){
+                $product = $this->product->create($dataUploadFeatureImage);
+            } else{
+                return redirect()->back(); 
+            }
 
             // image upload
             if ($request->hasFile('image_path')) {
@@ -65,6 +69,7 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Message: '. $e->getMessage() . '  Line: ' . $e->getLine());
+
             return redirect()->route('admin.products.create')->with('error','Failed created');
         }
     }
