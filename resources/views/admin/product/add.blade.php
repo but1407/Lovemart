@@ -55,7 +55,6 @@
                                         <select name="tags[]"
                                             class="form-control js-example-tokenizer @error('name') is-invalid @enderror"
                                             multiple="multiple" value="{{ old('tags') }}">
-
                                         </select>
                                         @error('tags')
                                             <div class="alert alert-danger">{{ $message }}</div>

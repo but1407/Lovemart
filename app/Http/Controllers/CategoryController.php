@@ -33,10 +33,10 @@ class CategoryController extends Controller
         if (!empty($request->name)) {
             $keyword = $request->name;
         }
-        
         $categories = $this->category->getCategory($keyword);
         return view('admin.category.index',compact('categories'));
     }
+
     /**
      * Show the form for creating a new resource.
      *

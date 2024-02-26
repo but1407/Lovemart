@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductService{
     use StorageImageTrait;
-     private $category;
+    private $category;
     private $tag;
     private $producttag;
     private $product;
@@ -98,6 +98,5 @@ class ProductService{
             $tagIds[] = $tagIntance->id;
         }
         return $tagIds;
-        
     }
 }

@@ -14,11 +14,11 @@ class Product extends Model
     public function images(){
         return $this->hasMany(ProductImage::class,'product_id'); // 1 product_id có thể có nhiều ảnh, tham số thứ có thể k có, nếu k có tham số 2 thì laravel sẽ tự động đưa tên class về chữ thường và thêm id phía sau vd: product_id
     }
-    public function tags(){
-        return $this
-        ->belongsToMany(Tag::class, 'product_tags', 'product_id', 'tag_id')
-        ->withTimestamps();
-    }
+        public function tags(){
+            return $this
+            ->belongsToMany(Tag::class, 'product_tags', 'product_id', 'tag_id')
+            ->withTimestamps();
+        }
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
     }
@@ -33,9 +33,12 @@ class Product extends Model
 
         // $products = $products->get();
         $products = $products -> paginate(20);
+        
         return $products;
+        
+        }
     }
     // public function productImage(){
     //     return $this->hasMany(ProductImage::class,'product_id'); // 1 product_id có thể có nhiều ảnh, tham số thứ có thể k có, nếu k có tham số 2 thì laravel sẽ tự động đưa tên class về chữ thường và thêm id phía sau vd: product_id
     // }
-}
+    
