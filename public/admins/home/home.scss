@@ -1,0 +1,352 @@
+* {
+  font-family: "Kalam", cursive;
+}
+
+.container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50rem;
+  height: 20rem;
+}
+
+.question {
+  position: absolute;
+  font-size: 2.5rem;
+  width: 100%;
+  top: 1rem;
+  text-align: center;
+}
+
+.ans {
+  font-size: 2rem;
+  position: absolute;
+  top: 8.7rem;
+  cursor: pointer;
+  input {
+    display: none;
+  }
+  input:checked ~ div {
+    opacity: 1;
+  }
+  &.yes {
+    left: 12.1rem;
+  }
+  &.no {
+    left: 33.4rem;
+  }
+  .tick {
+    position: absolute;
+    top: -0.5rem;
+    left: 0.3rem;
+    opacity: 0;
+  }
+}
+
+.cat > div {
+  display: inline-block;
+  position: absolute;
+}
+
+.tick {
+  color: green;
+  font-size: 2.5rem;
+  top: 8.2rem;
+  left: 4.4rem;
+}
+
+.cat {
+  width: 20rem;
+  height: 20rem;
+  position: absolute;
+  left: 20rem;
+  display: none;
+}
+
+.face {
+  font-size: 6.5rem;
+  transform: rotate(250deg);
+  position: absolute;
+  left: 6.5rem;
+  top: 2.3rem;
+  font-weight: 300;
+}
+
+.ear {
+  font-size: 5rem;
+  font-weight: 500;
+  transform: rotate(180deg);
+  position: absolute;
+  &_l {
+    left: 7rem;
+    top: 0.5rem;
+  }
+  &_r {
+    left: 11.3rem;
+    top: 1.8rem;
+    transform: rotate(220deg);
+  }
+}
+
+.eye {
+  font-size: 4rem;
+  position: absolute;
+  transform: rotate(210deg);
+  &_l {
+    top: 5.1rem;
+    left: 7rem;
+  }
+  &_r {
+    top: 5.3rem;
+    left: 9rem;
+  }
+}
+
+.mouth {
+  font-size: 1.3rem;
+  position: absolute;
+  top: 7.3rem;
+  left: 8.5rem;
+  font-weight: 700;
+}
+
+.wisker {
+  font-size: 2rem;
+  position: absolute;
+  font-weight: 700;
+  &_l {
+    top: 6.2rem;
+    left: 5rem;
+    transform: rotate(100deg);
+  }
+  &_r {
+    top: 7rem;
+    left: 10rem;
+    transform: rotate(70deg);
+  }
+}
+
+.body {
+  font-size: 4rem;
+  position: absolute;
+  top: 9.2rem;
+  left: 6rem;
+}
+
+.foot {
+  font-size: 2rem;
+  position: absolute;
+  font-weight: 700;
+  transform-origin: top;
+  &_l {
+    top: 13rem;
+    left: 7.5rem;
+  }
+  &_r {
+    top: 13rem;
+    left: 8.5rem;
+  }
+}
+
+.hand {
+  font-size: 2rem;
+  position: absolute;
+  font-weight: 700;
+
+  &_l {
+    transform: rotate(120deg);
+    top: 8.5rem;
+    left: 6rem;
+  }
+  &_r {
+    transform: rotate(110deg);
+    top: 9.6rem;
+    left: 5.2rem;
+  }
+}
+
+.tail {
+  font-size: 4rem;
+  position: absolute;
+  top: 9.5rem;
+  left: 10.5rem;
+  transform: rotate(20deg);
+}
+
+$animation_time: 3s;
+
+@keyframes disappear {
+  0% {
+    opacity: 0;
+  }
+  28% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0) scaleX(-1);
+  }
+  28% {
+    transform: translateX(0) scaleX(-1);
+  }
+  30% {
+    transform: translateX(0) scaleX(1);
+  }
+  40% {
+    transform: translateX(0) scaleX(1);
+  }
+  70% {
+    transform: translateX(-12.5rem);
+  }
+  97% {
+    transform: translateX(-12.5rem);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-12.5rem);
+    opacity: 0;
+  }
+}
+
+@mixin walk_animation($foot, $deg) {
+  animation: walk_#{$foot} $animation_time linear infinite;
+  @keyframes walk_#{$foot} {
+    0% {
+      transform: rotate(0deg);
+    }
+    40% {
+      transform: rotate(0deg);
+    }
+    45% {
+      transform: rotate($deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    55% {
+      transform: rotate($deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    65% {
+      transform: rotate($deg);
+    }
+    70% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+@keyframes tick {
+  0% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+  28% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+  30% {
+    transform: translate(0.5rem, 0) scaleX(1);
+  }
+  70% {
+    transform: translate(0.5rem, 0) scaleX(1);
+  }
+  100% {
+    transform: translate(0.5rem, 0) scaleX(1);
+  }
+}
+
+@keyframes hand_position {
+  0% {
+    transform: translate(0.1rem, -0.2rem);
+    opacity: 0.5;
+  }
+  5% {
+    opacity: 1;
+  }
+
+  20% {
+    transform: translate(0rem, 0rem);
+  }
+}
+
+@keyframes checkbox_no {
+  0% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 1;
+  }
+  29% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes checkbox_yes {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  71% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.active.container {
+  pointer-events: none;
+  .ans.no .tick {
+    animation: checkbox_no $animation_time forwards linear;
+  }
+  .ans.yes .tick {
+    animation: checkbox_yes $animation_time forwards linear;
+  }
+}
+
+.active .cat {
+  display: block;
+  transform: scaleX(-1);
+  animation: move $animation_time forwards linear;
+  .tick {
+    transform: translate(0, 0) scaleX(-1);
+    animation: tick $animation_time forwards linear;
+  }
+  .hand {
+    animation: hand_position $animation_time forwards linear;
+  }
+  .eye,
+  .mouth,
+  .wisker_r {
+    opacity: 0;
+    animation: disappear $animation_time forwards linear;
+  }
+  .foot {
+    &_l {
+      @include walk_animation(l, -20deg);
+    }
+    &_r {
+      @include walk_animation(r, 20deg);
+    }
+  }
+}

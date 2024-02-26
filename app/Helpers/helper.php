@@ -79,6 +79,8 @@ class Helper
                 <tr>
                     <td>' . $key + $products->firstItem() . '</td>
                     <td class="table-primary">' . $product->name . '</td>
+                    <td>' . self::active($product->status) . '</td>
+
                     <td>' . optional($product->category)->name . '</td>
                     <td>' . number_format($product->price) . '</td>
                     <td>' . '<img class="product_image_150_100" src="' . $product->feature_image_path . '">' . '</td>

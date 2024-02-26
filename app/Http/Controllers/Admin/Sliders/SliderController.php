@@ -34,7 +34,11 @@ class SliderController extends Controller
         // return view('admin.slider.add');
         $dataInsert = [
             'name'=> $request->name,
-            'description'=>$request->description
+            'description'=>$request->description,
+            'sort_by'=>$request->sort_by,
+            'active'=>$request->active,
+
+            
         ];
         $dataImageSlider = $this->storageImageUpload($request,'image_path','slider');
         if(!empty($dataImageSlider)){
@@ -52,7 +56,9 @@ class SliderController extends Controller
     public function update($id, CreateSliderRequest $request){
         $dataUpdate = [
             'name'=> $request->name,
-            'description'=>$request->description
+            'description'=>$request->description,
+            'sort_by'=>$request->sort_by,
+            'active'=>$request->active,
         ];
         $dataImageSlider = $this->storageImageUpload($request,'image_path','slider');
         if(!empty($dataImageSlider)){

@@ -50,6 +50,7 @@
                             <tr>
                                 <th scope="col">STT</th>
                                 <th scope="col">Tên Sản phẩm</th>
+                                <th scope="col">Active</th>
                                 <th scope="col">Danh mục</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Ảnh đại diện</th>

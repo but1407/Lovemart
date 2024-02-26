@@ -47,6 +47,26 @@
                                 </div>
                                 <input type="hidden" name="thumb_1" id="thumb_1">
                             </div>
+                            
+                
+                            <div class="form-group">
+                                <label for="menu">Sắp Xếp</label>
+                                <input type="number" name="sort_by" value="{{ $slider->sort_by }}" class="form-control" >
+                            </div>
+                
+                            <div class="form-group">
+                                <label>Kích Hoạt</label>
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" value="1" type="radio" id="active" name="active"
+                                        {{ $slider->active == 1 ? 'checked' : '' }}>
+                                    <label for="active" class="custom-control-label">Có</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" value="0" type="radio" id="no_active" name="active"
+                                        {{ $slider->active == 0 ? 'checked' : '' }}>
+                                    <label for="no_active" class="custom-control-label">Không</label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

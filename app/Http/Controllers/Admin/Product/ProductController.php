@@ -84,8 +84,8 @@ class ProductController extends Controller
             DB::beginTransaction();
             // Create data
             $dataUploadFeatureImage = $this->productservice->store($request);
-            $product = $this->product->find($id)->update($dataUploadFeatureImage);
             $product = $this->product->find($id);
+            $product->update($dataUploadFeatureImage);
 
             // image upload
             if ($request->hasFile('image_path')) {
