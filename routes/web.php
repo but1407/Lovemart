@@ -151,6 +151,7 @@ Route::middleware(['auth'])
             #cart
             Route::controller(CartController::class)->name('carts.')->prefix('carts')->group(function () {
                 Route::get('/customers','index')->name('view');
+                Route::get('/customers/view/{customer}', 'show')->name('detail');
             });
 
             #logout

@@ -9,4 +9,8 @@ class Customer extends Model
 {
     use HasFactory;
     protected $table = 'customers';
+
+    public function carts(){
+        return $this->hasMany(Cart::class, );
+    }
 }
