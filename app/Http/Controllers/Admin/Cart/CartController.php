@@ -11,4 +11,10 @@ class CartController extends Controller
     public function __construct(CartService $cartservice){
         $this->cartservice = $cartservice;
     }
+    public function index(){
+
+        return view('admin.carts.customer',[
+            'customers' => $this->cartservice->getCustomer(),
+        ]);
+    }
 }

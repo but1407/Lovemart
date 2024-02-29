@@ -6,13 +6,13 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Menus\MenuController;
 use App\Http\Controllers\Users\AuthController;
 use App\Http\Controllers\Users\LoginController;
+use App\Http\Controllers\Admin\Cart\CartController;
 use App\Http\Controllers\Admin\Role\RoleController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\Users\VerificationController;
 use App\Http\Controllers\Admin\Sliders\SliderController;
 use App\Http\Controllers\Admin\Message\MessageController;
 use App\Http\Controllers\Admin\Product\ProductController;
-
 use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Permission\PermissionController;
 
@@ -146,6 +146,11 @@ Route::middleware(['auth'])
                 Route::get('/message', 'index')->name('view');
                 Route::get('/messages', 'fetchMessages')->name('fetch');
                 Route::post('/messages', 'sendMessage')->name('send');
+            });
+
+            #cart
+            Route::controller(CartController::class)->name('carts.')->prefix('carts')->group(function () {
+                Route::get('/customers','index')->name('view');
             });
 
             #logout
